@@ -18,7 +18,7 @@ fetch("http://localhost:3000/api/teddies").then(response => {
 
             let blockBear = document.createElement("a");
             blockBear.classList.add("space-y-10");
-            blockBear.setAttribute("href", "#");
+            blockBear.setAttribute("href", "produit.html?id=" + data[i]._id);
 
             aBear.appendChild(blockBear);
 
