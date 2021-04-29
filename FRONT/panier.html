@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/tailwind.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/68240c0573.js" crossorigin="anonymous"></script>
     <title>Panier</title>
 
@@ -16,7 +17,7 @@
 
         <header class="pink-orinoco flex justify-between w-full sm:px-6">
             <div class="w-52 py-2 px-6 self-center">
-                <a href="#">
+                <a href="index.html">
                     <img src="./img/Orinoco.png" alt="Logo Orinoco">
                 </a>
             </div>
@@ -27,6 +28,74 @@
                 </a>
             </div>
         </header>
+
+        <!--MAIN-->
+
+        <main class="bg-red-300 p-4 sm:p-10 lg:px-20">
+            <div class="box">
+                <h2 class="font-bold text-3xl text-center my-4 sm:mt-0">Votre panier</h2>
+                <div class="bg-red-200 rounded-xl shadow-md p-2 sm:px-6">
+                    <table class="text-xl text-center m-auto w-full" >
+                        <tr class="border-b-2 border-gray-400">
+                            <th class="mrem p-2">Nom</th>
+                            <th>Couleur</th>
+                            <th>Prix</th>
+                        </tr>
+                        <tr>
+                            <td class="mrem">
+                                <div class="flex items-center justify-center">
+                                    <img class="m-2 h-10 sm:h-20 lg:h-32 w-10 sm:w-20 lg:w-32 xs rounded-full" src="./img/test.jpg" alt="">
+                                    <p>Norbert</p>
+                                </div>
+                            </td>
+                            <td>Black</td>
+                            <td>29€</td>
+                            <td>
+                                <button class="bg-red-600 rounded-full w-full del">-</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t-2 border-gray-400">
+                            <td colspan="2" class="font-bold p-2">Prix total</td>
+                            <td class="font-bold">29€</td>
+                        </tr>
+                    </table>
+                </div>
+                <h2 class="font-bold text-center text-2xl my-4">Information livraison</h2>
+                <div class="bg-red-200 rounded-xl shadow-md p-4">
+                    <form action="" method="POST" class="text-xl text-center font-bold space-y-4">
+                        <div class="grid grid-cols-1 max-w-lg m-auto">
+                            <label for="name">Nom :</label>
+                            <input type="text" id="name" name="user_name" class="border-2 border-black rounded-lg">
+                        </div>
+                        <div class="grid grid-cols-1 max-w-lg m-auto">
+                            <label for="name">Prénom :</label>
+                            <input type="text" id="name" name="user_name" class="border-2 border-black rounded-lg">
+                        </div>
+                        <div class="grid grid-cols-1 max-w-lg m-auto">
+                            <label for="mail">E-mail :</label>
+                            <input type="email" id="mail" name="user_mail" class="border-2 border-black rounded-lg">
+                        </div>
+                        <div class="grid grid-cols-1 max-w-lg m-auto">
+                            <label for="address">Adresse :</label>
+                            <input type="text" id="address" name="user_address" class="border-2 border-black rounded-lg"></input>
+                        </div>
+                        <div class="grid grid-cols-1 max-w-lg m-auto">
+                            <label for="city">Ville :</label>
+                            <input type="text" name="city" id="user_city" class="border-2 border-black rounded-lg">
+                        </div>
+                        <div class="grid grid-cols-1 max-w-lg m-auto">
+                            <button type="submit">Confirmer</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="payment">
+
+                </div>
+            </div>
+        </main>
+
+        <!--FOOTER-->
+
         <footer class="pink-orinoco w-full">
             <div class="px-4 py-12 sm:px-8">
                 <nav class="flex flex-wrap justify-center font-bold text-xl space-x-8">

@@ -90,6 +90,7 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
                 break;
                 case 'Black':
                 color.style.backgroundColor = "#000";
+                color.style.color = "#FFF";
                 break;
                 case 'White':
                 color.style.backgroundColor = "#FFF";
@@ -105,6 +106,7 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
                 break;
                 case 'Blue':
                 color.style.backgroundColor = "	#0000FF";
+                color.style.color = "#FFF";
                 break;
                 case 'Pink':
                 color.style.backgroundColor = "#FF69B4";
