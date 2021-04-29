@@ -63,7 +63,7 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     blockDetails.appendChild(blockSelect);
 
     let select = document.createElement("select");
-    select.classList.add("p-2", "rounded-full", "shadow-md");
+    select.classList.add("p-2", "rounded-full", "shadow-md", "text-base");
     select.setAttribute("name", "color");
 
     blockSelect.appendChild(select);
@@ -126,7 +126,7 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     blockDetails.appendChild(blockButton);
 
     let button = document.createElement("button");
-    button.classList.add("bg-red-200", "p-2", "rounded-full", "shadow-md");
+    button.classList.add("border-black", "border-2", "rounded-full", "px-8", "bg-purple-600", "text-white", "shadow-md");
     button.textContent = "Ajouter au panier";
 
     blockButton.appendChild(button);
