@@ -33,7 +33,7 @@
 
         <main class="bg-red-300 p-4 sm:p-10 lg:px-20">
             <div class="box">
-                <h2 class="font-bold text-3xl text-center my-4 sm:mt-0">Votre panier</h2>
+                <h2 class="font-bold text-3xl text-center my-4 sm:mt-0 underline">Votre panier</h2>
                 <div class="bg-red-200 rounded-xl shadow-md p-2 sm:px-6">
                     <table class="text-xl text-center m-auto w-full" >
                         <tr class="border-b-2 border-gray-400">
@@ -51,45 +51,50 @@
                             <td>Black</td>
                             <td>29€</td>
                             <td>
-                                <button class="bg-red-600 rounded-full w-full del">-</button>
+                                <button class="bg-red-600 rounded-full w-full del sm:border-2 sm:border-black">-</button>
                             </td>
                         </tr>
+                        
                         <tr class="border-t-2 border-gray-400">
                             <td colspan="2" class="font-bold p-2">Prix total</td>
                             <td class="font-bold">29€</td>
                         </tr>
                     </table>
                 </div>
-                <h2 class="font-bold text-center text-2xl my-4">Information livraison</h2>
+                <h2 class="font-bold text-center text-2xl my-4 underline"> Moyen de paiement</h2>
+                <div class="bg-red-200 rounded-xl shadow-md text-center p-4 sm:grid sm:grid-cols-4">
+                    <button class="text-5xl sm:text-6xl opacity-60 focus:opacity-100 focus:text-blue-800 focus:outline-none"><i class="fab fa-cc-paypal"></i></button>
+                    <button class="text-5xl sm:text-6xl opacity-60 focus:opacity-100 focus:text-blue-800 focus:outline-none"><i class="fab fa-cc-mastercard"></i></button>
+                    <button class="text-5xl sm:text-6xl opacity-60 focus:opacity-100 focus:text-blue-800 focus:outline-none"><i class="fab fa-cc-visa"></i></button>
+                    <button class="text-5xl sm:text-6xl opacity-60 focus:opacity-100 focus:text-blue-800 focus:outline-none"><i class="fab fa-cc-amex"></i></button>
+                </div>
+                <h2 class="font-bold text-center text-2xl my-4 underline">Information livraison</h2>
                 <div class="bg-red-200 rounded-xl shadow-md p-4">
                     <form action="" method="POST" class="text-xl text-center font-bold space-y-4">
                         <div class="grid grid-cols-1 max-w-lg m-auto">
                             <label for="name">Nom :</label>
-                            <input type="text" id="name" name="user_name" class="border-2 border-black rounded-lg">
+                            <input type="text" id="name" name="user_name" class="border-2 border-black rounded-lg" required>
                         </div>
                         <div class="grid grid-cols-1 max-w-lg m-auto">
                             <label for="name">Prénom :</label>
-                            <input type="text" id="name" name="user_name" class="border-2 border-black rounded-lg">
+                            <input type="text" id="name" name="user_name" class="border-2 border-black rounded-lg" required>
                         </div>
                         <div class="grid grid-cols-1 max-w-lg m-auto">
                             <label for="mail">E-mail :</label>
-                            <input type="email" id="mail" name="user_mail" class="border-2 border-black rounded-lg">
+                            <input type="email" id="mail" name="user_mail" class="border-2 border-black rounded-lg" required>
                         </div>
                         <div class="grid grid-cols-1 max-w-lg m-auto">
                             <label for="address">Adresse :</label>
-                            <input type="text" id="address" name="user_address" class="border-2 border-black rounded-lg"></input>
+                            <input type="text" id="address" name="user_address" class="border-2 border-black rounded-lg" required>
                         </div>
                         <div class="grid grid-cols-1 max-w-lg m-auto">
                             <label for="city">Ville :</label>
-                            <input type="text" name="city" id="user_city" class="border-2 border-black rounded-lg">
+                            <input type="text" name="city" id="user_city" class="border-2 border-black rounded-lg" required>
                         </div>
                         <div class="grid grid-cols-1 max-w-lg m-auto">
-                            <button type="submit">Confirmer</button>
+                            <button type="submit" class="border-black border-2 rounded-full m-auto px-8 bg-purple-600 text-white">Valider</button>
                         </div>
                     </form>
-                </div>
-                <div class="payment">
-
                 </div>
             </div>
         </main>
