@@ -63,8 +63,9 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     blockDetails.appendChild(blockSelect);
 
     let select = document.createElement("select");
-    select.classList.add("p-2", "rounded-full", "shadow-md", "text-base");
-    select.setAttribute("name", "color");
+    select.classList.add("p-2", "rounded-full", "shadow-md", "text-base", "border-2", "border-black");
+    select.setAttribute("name", "color")
+    select.setAttribute("id", "colorProduit");
 
     blockSelect.appendChild(select);
 
@@ -127,7 +128,7 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     let labelQuantity = document.createElement("label");
     labelQuantity.classList.add("mr-4");
     labelQuantity.setAttribute("for", "quantity");
-    labelQuantity.textContent = "Quantité";
+    labelQuantity.textContent = "Quantité :";
 
     blockQuantity.appendChild(labelQuantity);
 
@@ -147,7 +148,57 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
     let button = document.createElement("button");
     button.classList.add("border-black", "border-2", "rounded-full", "px-8", "bg-purple-600", "text-white", "shadow-md");
+    button.setAttribute("id", "addCart");
     button.textContent = "Ajouter au panier";
 
     blockButton.appendChild(button);
+
+
+        // Création d'une class pour stocker le produit
+    class Produit {
+        constructor (id, name, imageUrl, price, description, quantity, color) {
+            this.id = id;
+            this.name = name;
+            this.imageUrl = imageUrl;
+            this.price  = price;
+            this.description = description;
+            this.quantity = quantity;
+            this.color = color;
+          }
+    };
+
+        // Récupération du bouton "Ajouter au panier"
+
+    const addCart = document.getElementById("addCart");
+
+    //localStorage.clear();
+
+        // Fonction pour le click du bouton
+
+    addCart.addEventListener("click", function (e) {
+        // Création du produit
+        const produit = new Produit(data._id, data.name, data.imageUrl, data.price/100, data.description, document.getElementById('quantity').value, document.getElementById('colorProduit').value);
+
+        // Condition pour savoir si un localStorage est présent ou non
+        if(localStorage.getItem("produits") == null) {
+            const pArray = [produit]; // Création d'un tableau avec les valeurs du produit
+            console.log(pArray);
+            const pStringify = JSON.stringify(pArray); 
+            console.log(pStringify);
+            localStorage.setItem("produits", pStringify); // Sauvegarde des données avec la clé "produits" de valeur pStringify
+
+        } else {
+            const produits = JSON.parse(localStorage.getItem("produits")); 
+            const filter = produits.filter(item => item.id === produit.id).filter(item => item.color === produit.color); // filtre pour vérifier l'id et la couleur
+            if (filter.length > 0) {
+                filter[0].quantity = parseInt(filter[0].quantity) + parseInt(document.getElementById('quantity').value); // Ajoute uniquement des quantitées si l'élement est déja présent
+            } else {
+                produits.push(produit); // Ajoute les nouvelles valeurs des produits non déja présente
+            }
+            const pStringify = JSON.stringify(produits);
+            localStorage.setItem("produits", pStringify); // Sauvegarde des données avec la clé "produits" de valeur pStringify
+            console.log(pStringify);
+        }
+        
+    });
 });

@@ -8,3 +8,10 @@
    padding: 0px 5px;
    max-width: 32px;
 }
+
+
+@media screen and (max-width: 550px) {
+    .imgHide {
+        display: none;
+    }
+}
