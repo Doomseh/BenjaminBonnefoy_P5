@@ -47,7 +47,7 @@ fetch("http://localhost:3000/api/teddies").then(response => {
 
             let priceBear = document.createElement("p");
             priceBear.classList.add("text-indigo-400", "font-bold");
-            priceBear.textContent = data[i].price + "€";
+            priceBear.textContent = data[i].price/100 + "€";
 
             blockPriceName.appendChild(priceBear);
         };

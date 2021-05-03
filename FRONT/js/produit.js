@@ -53,7 +53,7 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
     let priceProduit = document.createElement("p");
     priceProduit.classList.add("self-center", "text-2xl", "font-bold", "text-indigo-400", "underline");
-    priceProduit.textContent = data.price + "€";
+    priceProduit.textContent = data.price/100 + "€";
 
     blockDetails.appendChild(priceProduit);
 
@@ -118,7 +118,27 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
             select.appendChild(color);
         }
+    
+    let blockQuantity = document.createElement("div");
+    blockQuantity.classList.add("self-center");
 
+    blockDetails.appendChild(blockQuantity);
+
+    let labelQuantity = document.createElement("label");
+    labelQuantity.classList.add("mr-4");
+    labelQuantity.setAttribute("for", "quantity");
+    labelQuantity.textContent = "Quantité";
+
+    blockQuantity.appendChild(labelQuantity);
+
+    let quantity = document.createElement("input");
+    quantity.classList.add("border-2", "border-black");
+    quantity.setAttribute("type", "number");
+    quantity.setAttribute("id", "quantity");
+    quantity.setAttribute("min", "1");
+    quantity.setAttribute("max", "100");
+
+    blockQuantity.appendChild(quantity);
 
     let blockButton = document.createElement("div");
     blockButton.classList.add("self-center");
