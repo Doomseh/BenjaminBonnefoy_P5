@@ -25,7 +25,7 @@ fetch("http://localhost:3000/api/teddies").then(response => {
             let imgBear = document.createElement("img");
             imgBear.classList.add("mx-auto", "h-40", "w-40", "rounded-2xl", "xl:w-56", "xl:h-56", "object-cover");
             imgBear.setAttribute("src", data[i].imageUrl);
-            imgBear.setAttribute("alt", "Photo de l'ours en peluche");
+            imgBear.setAttribute("alt", "Photo de l'ours en peluche " + data[i].name);
 
             blockBear.appendChild(imgBear)
 

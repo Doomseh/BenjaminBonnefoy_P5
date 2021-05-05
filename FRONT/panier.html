@@ -32,34 +32,15 @@
         <!--MAIN-->
 
         <main class="bg-red-300 p-4 sm:p-10 lg:px-20">
-            <div class="box">
                 <h2 class="font-bold text-3xl text-center my-4 sm:mt-0 underline">Votre panier</h2>
                 <div class="bg-red-200 rounded-xl shadow-md p-2 sm:px-6">
-                    <table class="sm:text-xl text-center m-auto w-full" >
+                    <table class="sm:text-xl text-center m-auto w-full" id="boxPanier">
                         <tr class="border-b-2 border-gray-400">
                             <th class="mrem p-2">Nom</th>
                             <th>Couleur</th>
                             <th>Quantité</th>
                             <th class="text-indigo-400">Prix</th>
-                        </tr>
-                        <tr>
-                            <td class="mrem">
-                                <div class="flex items-center justify-center">
-                                    <img class="m-2 h-10 sm:h-20 lg:h-32 w-10 sm:w-20 lg:w-32 xs rounded-full imgHide" src="./img/test.jpg" alt="">
-                                    <p>Norbert</p>
-                                </div>
-                            </td>
-                            <td>Black</td>
-                            <td >1<br>(29€/u)</td>
-                            <td class="text-indigo-400">29€</td>
-                            <td>
-                                <button class="bg-red-600 rounded-full w-full del sm:border-2 sm:border-black">-</button>
-                            </td>
-                        </tr>
-                        
-                        <tr class="border-t-2 border-gray-400">
-                            <td colspan="3" class="font-bold p-2">Prix total</td>
-                            <td class="font-bold text-indigo-400">29€</td>
+                            <th></th>
                         </tr>
                     </table>
                 </div>
@@ -98,7 +79,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
         </main>
 
         <!--FOOTER-->
@@ -126,5 +106,9 @@
             </div>
         </footer>     
     </div>  
+
+    <!--SCRIPTS JS-->
+
+    <script type="text/javascript" src="./js/panier.js"></script>
 </body>
 </html>
