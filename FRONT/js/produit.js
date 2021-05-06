@@ -136,6 +136,7 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     quantity.classList.add("border-2", "border-black");
     quantity.setAttribute("type", "number");
     quantity.setAttribute("id", "quantity");
+    quantity.setAttribute("value", "1");
     quantity.setAttribute("min", "1");
     quantity.setAttribute("max", "100");
 

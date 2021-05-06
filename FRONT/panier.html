@@ -34,15 +34,21 @@
         <main class="bg-red-300 p-4 sm:p-10 lg:px-20">
                 <h2 class="font-bold text-3xl text-center my-4 sm:mt-0 underline">Votre panier</h2>
                 <div class="bg-red-200 rounded-xl shadow-md p-2 sm:px-6">
-                    <table class="sm:text-xl text-center m-auto w-full" id="boxPanier">
-                        <tr class="border-b-2 border-gray-400">
-                            <th class="mrem p-2">Nom</th>
-                            <th>Couleur</th>
-                            <th>Quantité</th>
-                            <th class="text-indigo-400">Prix</th>
-                            <th></th>
-                        </tr>
+                    <table class="sm:text-xl text-center m-auto w-full">
+                        <thead>
+                            <tr class="border-b-2 border-gray-400">
+                                <th class="mrem p-2">Nom</th>
+                                <th>Couleur</th>
+                                <th>Quantité</th>
+                                <th class="text-indigo-400">Prix</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="boxPanier"></tbody>
                     </table>
+                </div>
+                <div class="text-center text-xl my-4">
+                    <button class="border-black border-2 rounded-full m-auto px-8 bg-purple-600 text-white shadow-md" id="clearPanier">Vider le panier</button>
                 </div>
                 <h2 class="font-bold text-center text-2xl my-4 underline"> Moyen de paiement</h2>
                 <div class="bg-red-200 rounded-xl shadow-md text-center p-4 sm:grid sm:grid-cols-4">
