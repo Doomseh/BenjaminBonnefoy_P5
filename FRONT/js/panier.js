@@ -11,7 +11,7 @@ function resetHtml(boxPanier, storage) {
 
     boxPanier.innerHTML = "";
 
-    if(storage === null || storage === undefined || storage.length === 0 ) { 
+    if (storage === null || storage === undefined || storage.length === 0) {
 
         // Si le localStorage est vide alors cela affiche "Votre Panier est vide !"
 
@@ -23,9 +23,9 @@ function resetHtml(boxPanier, storage) {
         boxPanier.appendChild(empty);
 
     } else {
-        
+
         // Sinon création des éléments du panier
-    
+
         for (let i = 0; i < storage.length; i++) {
 
 
@@ -37,23 +37,23 @@ function resetHtml(boxPanier, storage) {
             let tdName = document.createElement("td");
             tdName.classList.add("mrem");
 
-                let divName = document.createElement("div");
-                divName.classList.add("flex", "items-center", "justify-center");
+            let divName = document.createElement("div");
+            divName.classList.add("flex", "items-center", "justify-center");
 
-                tdName.appendChild(divName);
+            tdName.appendChild(divName);
 
-                let imgName = document.createElement("img");
-                imgName.classList.add("m-2", "h-10", "sm:h-20", "lg:h-32", "w-10", "sm:w-20", "lg:w-32", "xs", "rounded-full", "imgHide", "object-cover");
-                imgName.setAttribute("src", storage[i].imageUrl);
-                imgName.setAttribute("alt", "Photo de la peluche " + storage[i].name);
+            let imgName = document.createElement("img");
+            imgName.classList.add("m-2", "h-10", "sm:h-20", "lg:h-32", "w-10", "sm:w-20", "lg:w-32", "xs", "rounded-full", "imgHide", "object-cover");
+            imgName.setAttribute("src", storage[i].imageUrl);
+            imgName.setAttribute("alt", "Photo de la peluche " + storage[i].name);
 
-                divName.appendChild(imgName);
+            divName.appendChild(imgName);
 
-                let pName = document.createElement("p");
-                pName.textContent = storage[i].name;
+            let pName = document.createElement("p");
+            pName.textContent = storage[i].name;
 
-                divName.appendChild(pName)
-            
+            divName.appendChild(pName)
+
             let tdColor = document.createElement("td");
             tdColor.textContent = storage[i].color;
 
@@ -67,12 +67,12 @@ function resetHtml(boxPanier, storage) {
 
             let tdButton = document.createElement("td");
 
-                let delButton = document.createElement("button");
-                delButton.classList.add("bg-red-600", "rounded-full", "w-full", "del", "sm:border-2", "sm:border-black");
-                delButton.setAttribute("id", storage[i].id + storage[i].color.replace(" ", "_"));
-                delButton.textContent = "-";
+            let delButton = document.createElement("button");
+            delButton.classList.add("bg-red-600", "rounded-full", "w-full", "del", "sm:border-2", "sm:border-black");
+            delButton.setAttribute("id", storage[i].id + storage[i].color.replace(" ", "_"));
+            delButton.textContent = "-";
 
-                tdButton.appendChild(delButton);
+            tdButton.appendChild(delButton);
 
             trBody.appendChild(tdName);
             trBody.appendChild(tdColor);
@@ -82,10 +82,10 @@ function resetHtml(boxPanier, storage) {
 
             // Récupération de l'id du button pour supprimer les éléments
 
-            const delProduit = document.getElementById(storage[i].id + storage[i].color.replace(" ", "_")); 
+            const delProduit = document.getElementById(storage[i].id + storage[i].color.replace(" ", "_"));
 
             // Fonction pour supprimer l'élément du panier au click du button
-        
+
             delProduit.addEventListener("click", function (e) {
 
                 storage.splice(i, 1); // Suppression du tableau correspondant à l'élément ciblé dans le storage
@@ -98,13 +98,13 @@ function resetHtml(boxPanier, storage) {
 
             });
         }
-    
-    // Création du pied du tableau du panier
 
-    let trFooter = document.createElement("tr");
-    trFooter.classList.add("border-t-2", "border-gray-400");
+        // Création du pied du tableau du panier
 
-    boxPanier.appendChild(trFooter);
+        let trFooter = document.createElement("tr");
+        trFooter.classList.add("border-t-2", "border-gray-400");
+
+        boxPanier.appendChild(trFooter);
 
         let tdTotal = document.createElement("td");
         tdTotal.classList.add("font-bold", "p-2");
@@ -128,8 +128,8 @@ function resetHtml(boxPanier, storage) {
         trFooter.appendChild(tdTotal);
         trFooter.appendChild(TotalPrice);
     }
-}  
-        
+}
+
 // Récupération de l'id du button pour vider le panier et création de sa fonction au click
 
 const clearPanier = document.getElementById("clearPanier");
@@ -139,10 +139,3 @@ clearPanier.addEventListener("click", function (e) {
     console.log(storage);
     resetHtml(boxPanier, storage); // Appel de la fonction pour recharger l'HTML
 });
-
-
-
-
-
-
-
