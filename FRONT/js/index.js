@@ -6,14 +6,25 @@ fetch("http://localhost:3000/api/teddies").then(response => {
     console.log(data)
 
     let divOurs = document.getElementById("divOurs"); // récupération de la <div> contenant les ours
-
-        /* Création d'une boucle pour récupérer la totalité des peluches */
+    
+        // Création d'une boucle pour récupérer la totalité des peluches 
 
         for(let i = 0; i < data.length; i++) {
 
-            let aBear = document.createElement("div");
-            aBear.classList.add("py-10", "px-6", "bg-red-200", "text-center", "rounded-lg", "shadow-md");
+            
 
+            let createHtml = function (test, attribute1, liste1) {
+
+                test.setAttribute(attribute1, liste1);
+                
+                
+            }
+            
+
+            let aBear = document.createElement("div");
+            createHtml(aBear, "class", "py-10 px-6 bg-red-200 text-center rounded-lg shadow-md");
+          //  aBear.classList.add("py-10", "px-6", "bg-red-200", "text-center", "rounded-lg", "shadow-md");
+            
             divOurs.appendChild(aBear);
 
             let blockBear = document.createElement("a");

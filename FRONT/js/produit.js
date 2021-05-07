@@ -172,8 +172,6 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
     const addCart = document.getElementById("addCart");
 
-    //localStorage.clear();
-
         // Fonction pour le click du bouton
 
     addCart.addEventListener("click", function (e) {
