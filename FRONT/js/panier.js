@@ -15,12 +15,12 @@ function resetHtml(boxPanier, storage) {
 
         // Si le localStorage est vide alors cela affiche "Votre Panier est vide !"
 
-        let empty = document.createElement("td");
+        /* let empty = document.createElement("td");
         empty.classList.add("text-center");
-        empty.setAttribute("colspan", "4")
-        empty.textContent = "Votre panier est vide !"
-
-        boxPanier.appendChild(empty);
+        empty.setAttribute("colspan", "4");
+        boxPanier.appendChild(empty); */
+        let empty = createHtml("td", {"class": "text-center", "colspan": "4"}, boxPanier);
+        empty.textContent = "Votre panier est vide !";
 
     } else {
 
@@ -29,56 +29,65 @@ function resetHtml(boxPanier, storage) {
         for (let i = 0; i < storage.length; i++) {
 
 
-            let trBody = document.createElement("tr");
+            /* let trBody = document.createElement("tr");
             trBody.classList.add("border-b-2", "border-gray-400")
+            boxPanier.appendChild(trBody); */
+            let trBody = createHtml("tr", {"class": "border-b-2 border-gray-400"}, boxPanier);
 
-            boxPanier.appendChild(trBody);
-
-            let tdName = document.createElement("td");
+            /* let tdName = document.createElement("td");
             tdName.classList.add("mrem");
+            trBody.appendChild(tdName); */
+            let tdName = createHtml("td", {"class" : "mrem"}, trBody);
 
-            let divName = document.createElement("div");
+            /* let divName = document.createElement("div");
             divName.classList.add("flex", "items-center", "justify-center");
+            tdName.appendChild(divName); */
+            let divName = createHtml("div", {"class": "flex items-center justify-center"}, tdName);
 
-            tdName.appendChild(divName);
-
-            let imgName = document.createElement("img");
+            /* let imgName = document.createElement("img");
             imgName.classList.add("m-2", "h-10", "sm:h-20", "lg:h-32", "w-10", "sm:w-20", "lg:w-32", "xs", "rounded-full", "imgHide", "object-cover");
             imgName.setAttribute("src", storage[i].imageUrl);
             imgName.setAttribute("alt", "Photo de la peluche " + storage[i].name);
+            divName.appendChild(imgName); */
+            let imgName = createHtml("img", {"class": "m-2 h-10 sm:h-20 lg:h-32 w-10 sm:w-20 lg:w-32 xs rounded-full imgHide object-cover", "src": storage[i].imageUrl, "alt": "Photo de la peluche " + storage[i].name}, divName);
 
-            divName.appendChild(imgName);
-
-            let pName = document.createElement("p");
+            /* let pName = document.createElement("p");
+            divName.appendChild(pName); */
+            let pName = createHtml("p", {"class": "font-bold"}, divName);
             pName.textContent = storage[i].name;
 
-            divName.appendChild(pName)
-
-            let tdColor = document.createElement("td");
+            /* let tdColor = document.createElement("td");
+            trBody.appendChild(tdColor); */
+            let tdColor = createHtml("td", {},trBody);
             tdColor.textContent = storage[i].color;
 
-            let tdQuantité = document.createElement("td");
+            /* let tdQuantité = document.createElement("td");
+            trBody.appendChild(tdQuantité); */
+            let tdQuantité = createHtml("td", {}, trBody);
             tdQuantité.textContent = storage[i].quantity + " (" + storage[i].price + "€/u)";
 
-            let tdPrice = document.createElement("td");
+            /* let tdPrice = document.createElement("td");
             tdPrice.classList.add("text-indigo-400", "priceT");
             tdPrice.setAttribute("value", storage[i].price * storage[i].quantity);
+            trBody.appendChild(tdPrice); */
+            let tdPrice = createHtml("td", {"class": "text-indigo-400 priceT", "value": storage[i].price * storage[i].quantity}, trBody);
             tdPrice.textContent = storage[i].price * storage[i].quantity + "€";
 
-            let tdButton = document.createElement("td");
+            /* let tdButton = document.createElement("td");
+            trBody.appendChild(tdButton); */
+            let tdButton = createHtml("td", {}, trBody);
 
-            let delButton = document.createElement("button");
+            /* let delButton = document.createElement("button");
             delButton.classList.add("bg-red-600", "rounded-full", "w-full", "del", "sm:border-2", "sm:border-black");
             delButton.setAttribute("id", storage[i].id + storage[i].color.replace(" ", "_"));
+            tdButton.appendChild(delButton); */
+            let delButton = createHtml("button", {"class": "bg-red-600 rounded-full w-full del sm:border-2 sm:border-black", "id": storage[i].id + storage[i].color.replace(" ", "_")}, tdButton);
             delButton.textContent = "-";
-
-            tdButton.appendChild(delButton);
-
-            trBody.appendChild(tdName);
-            trBody.appendChild(tdColor);
-            trBody.appendChild(tdQuantité);
-            trBody.appendChild(tdPrice);
-            trBody.appendChild(tdButton);
+            
+            
+            
+            
+            
 
             // Récupération de l'id du button pour supprimer les éléments
 
@@ -101,14 +110,16 @@ function resetHtml(boxPanier, storage) {
 
         // Création du pied du tableau du panier
 
-        let trFooter = document.createElement("tr");
+        /* let trFooter = document.createElement("tr");
         trFooter.classList.add("border-t-2", "border-gray-400");
+        boxPanier.appendChild(trFooter); */
+        let trFooter = createHtml("tr", {"class": "border-t-2 border-gray-400"}, boxPanier);
 
-        boxPanier.appendChild(trFooter);
-
-        let tdTotal = document.createElement("td");
+        /* let tdTotal = document.createElement("td");
         tdTotal.classList.add("font-bold", "p-2");
         tdTotal.setAttribute("colspan", "3");
+        trFooter.appendChild(tdTotal); */
+        let tdTotal = createHtml("td", {"class": "font-bold p-2", "colspan": "3"}, trFooter);
         tdTotal.textContent = "Prix Total";
 
         let totalPrice = 0; // Prix total défini de base à 0
@@ -121,12 +132,11 @@ function resetHtml(boxPanier, storage) {
 
         console.log(totalPrice)
 
-        let TotalPrice = document.createElement("td");
+        /* let TotalPrice = document.createElement("td");
         TotalPrice.classList.add("font-bold", "text-indigo-400");
-        TotalPrice.textContent = totalPrice + "€"; // On affiche le Prix total
-
-        trFooter.appendChild(tdTotal);
-        trFooter.appendChild(TotalPrice);
+        trFooter.appendChild(TotalPrice); */
+        let total = createHtml("td", {"class": "font-bold text-indigo-400"}, trFooter);
+        total.textContent = totalPrice + "€"; // On affiche le Prix total
     }
 }
 
