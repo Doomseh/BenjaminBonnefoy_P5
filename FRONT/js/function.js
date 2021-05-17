@@ -8,21 +8,21 @@
 function createHtml(tag, attributes, parent) {
 
     let test = document.createElement(tag);
-    Object.entries(attributes).forEach((value) => { 
+    Object.entries(attributes).forEach((value) => {
         test.setAttribute(value[0], value[1]);
     });
-    
+
     parent.appendChild(test);
 
     return test;
 };
 
-const validEmail = function(inputEmail) {
+const validEmail = function (inputEmail) {
 
     const emailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
     let testEmail = emailRegex.test(inputEmail.value);
     console.log(testEmail);
-    
+
     if (testEmail) {
         email.classList.remove("border-black", "border-red-500");
         email.classList.add("border-green-400");
@@ -84,4 +84,3 @@ function validCP(inputCP) {
         return false;
     }
 };
-
