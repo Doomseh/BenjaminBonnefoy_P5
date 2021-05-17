@@ -149,3 +149,54 @@ clearPanier.addEventListener("click", function (e) {
     console.log(storage);
     resetHtml(boxPanier, storage); // Appel de la fonction pour recharger l'HTML
 });
+
+// On passe au formulaire de commande
+
+let form = document.getElementById("checkForm");
+
+let userName = form.userName;
+let userName2 = form.userName2;
+let email = form.userEmail;
+let address = form.userAddress;
+let city = form.userCity;
+let CP = form.userCP;
+
+userName.addEventListener("change", function() {
+    validName(this);
+});
+
+userName2.addEventListener("change", function() {
+    validName(this);
+});
+
+email.addEventListener("change", function() {
+    validEmail(this);
+});
+
+address.addEventListener("change", function() {
+    validAddress(this);
+});
+
+city.addEventListener("change", function() {
+    validName(this);
+});
+
+CP.addEventListener("change", function() {
+    validCP(this);
+})
+
+
+/* document.getElementById("checkForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Commande envoyé !");
+}); */
+
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    if (validName(userName) && validName(userName2) && validEmail(email) && validAddress(address) && validName(city) && validCP(CP)) {
+        console.log("ça marche !")
+    } else {
+        alert("Tout les champs ne sont pas correct");
+    }
+});

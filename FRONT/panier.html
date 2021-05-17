@@ -59,29 +59,33 @@
                 </div>
                 <h2 class="font-bold text-center text-2xl my-4 underline">Information livraison</h2>
                 <div class="bg-red-200 rounded-xl shadow-md p-4">
-                    <form action="" method="POST" class="text-xl text-center font-bold space-y-4">
+                    <form action="" method="POST" class="text-xl text-center font-bold space-y-4" id="checkForm">
                         <div class="grid grid-cols-1 max-w-lg m-auto">
-                            <label for="name">Nom :</label>
-                            <input type="text" id="name" name="user_name" class="border-2 border-black rounded-lg" required>
+                            <label for="userName">Nom :</label>
+                            <input type="text" name="userName" class="border-2 border-black rounded-lg" required>
                         </div>
                         <div class="grid grid-cols-1 max-w-lg m-auto">
-                            <label for="name">Prénom :</label>
-                            <input type="text" id="name" name="user_name" class="border-2 border-black rounded-lg" required>
+                            <label for="userName2">Prénom :</label>
+                            <input type="text" name="userName2" class="border-2 border-black rounded-lg" required>
                         </div>
                         <div class="grid grid-cols-1 max-w-lg m-auto">
-                            <label for="mail">E-mail :</label>
-                            <input type="email" id="mail" name="user_mail" class="border-2 border-black rounded-lg" required>
+                            <label for="userEmail">E-mail :</label>
+                            <input type="email" name="userEmail" class="border-2 border-black rounded-lg" required>
                         </div>
                         <div class="grid grid-cols-1 max-w-lg m-auto">
-                            <label for="address">Adresse :</label>
-                            <input type="text" id="address" name="user_address" class="border-2 border-black rounded-lg" required>
+                            <label for="userAddress">Adresse :</label>
+                            <input type="text" name="userAddress" class="border-2 border-black rounded-lg" required>
                         </div>
                         <div class="grid grid-cols-1 max-w-lg m-auto">
-                            <label for="city">Ville :</label>
-                            <input type="text" name="city" id="user_city" class="border-2 border-black rounded-lg" required>
+                            <label for="userCity">Ville :</label>
+                            <input type="text" name="userCity" class="border-2 border-black rounded-lg" required>
                         </div>
                         <div class="grid grid-cols-1 max-w-lg m-auto">
-                            <button type="submit" class="border-black border-2 rounded-full m-auto px-8 bg-purple-600 text-white shadow-md">Valider</button>
+                            <label for="userCP">Code Postal :</label>
+                            <input type="text" name="userCP" class="border-2 border-black rounded-lg" required>
+                        </div>
+                        <div class="grid grid-cols-1 max-w-lg m-auto">
+                            <button type="submit" id="btnForm" class="border-black border-2 rounded-full m-auto px-8 bg-purple-600 text-white shadow-md">Valider</button>
                         </div>
                     </form>
                 </div>
