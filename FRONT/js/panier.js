@@ -151,14 +151,15 @@ function resetHtml(boxPanier, storage) {
             // On boucle sur chaque élément du panier et défini la nouvelle valeur du prix total à chaque fois en y ajoutant le prix de l'élement(quantité comprise) 
             totalPrice = totalPrice + (storage[i].price * storage[i].quantity);
         }
-
         console.log(totalPrice)
 
         /* let TotalPrice = document.createElement("td");
         TotalPrice.classList.add("font-bold", "text-indigo-400");
         trFooter.appendChild(TotalPrice); */
         let total = createHtml("td", {
-            "class": "font-bold text-indigo-400"
+            "class": "font-bold text-indigo-400",
+            "id": "total",
+            "value": totalPrice,
         }, trFooter);
         total.textContent = totalPrice + "€"; // On affiche le Prix total
     }
@@ -178,18 +179,18 @@ clearPanier.addEventListener("click", function (e) {
 
 let form = document.getElementById("checkForm");
 
-let userName = form.userName;
-let userName2 = form.userName2;
+let lastname = form.userName;
+let firstname = form.userName2;
 let email = form.userEmail;
 let address = form.userAddress;
 let city = form.userCity;
 let CP = form.userCP;
 
-userName.addEventListener("change", function () {
+lastname.addEventListener("change", function () {
     validName(this);
 });
 
-userName2.addEventListener("change", function () {
+firstname.addEventListener("change", function () {
     validName(this);
 });
 
@@ -216,10 +217,59 @@ CP.addEventListener("change", function () {
 }); */
 
 
+
+
 form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (validName(userName) && validName(userName2) && validEmail(email) && validAddress(address) && validName(city) && validCP(CP)) {
-        console.log("ça marche !")
+    if (validName(lastname) && validName(firstname) && validEmail(email) && validAddress(address) && validName(city) && validCP(CP)) {
+
+        let price = document.getElementById("total").attributes[2].value;
+        console.log(price)
+
+        const contact = {
+            "firstName": firstname.value,
+            "lastName": lastname.value,
+            "address": address.value,
+            "city": city.value,
+            "email": email.value,
+            "prix commande": price,
+        };
+        console.log(contact);
+
+        const products = new Array();
+
+        for (let i = 0; i < storage.length; i++) {
+            products.push(storage[i].id);
+        }
+
+        const promiseOrder = fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                contact,
+                products
+            })
+
+        }).then(async (response) => {
+            try {
+                //console.log(response);
+                const order = await response.json();
+                console.log(order);
+                localStorage.setItem("orderID", order.orderId);
+                localStorage.setItem("orderPrice", order["contact"]["prix commande"]);
+                localStorage.setItem("orderName", order["contact"]["firstName"] + " " + order["contact"]["lastName"])
+                console.log(order.orderId);
+                console.log(order["contact"]["prix commande"]);
+                console.log(order["contact"]["firstName"] + " " + order["contact"]["lastName"])
+                //window.location.href = "../FRONT/commande.html"
+            } catch (e) {
+                console.log(e)
+            }
+        });
+
     } else {
         alert("Tout les champs ne sont pas correct");
     }
