@@ -276,7 +276,9 @@ form.addEventListener("submit", function (e) {
                     console.log(order["contact"]["prix commande"]);
                     console.log(order["contact"]["firstName"] + " " + order["contact"]["lastName"])
 
-                    //window.location.href = "../FRONT/commande.html" // Puis on renvoie sur la page de confirmation de commande
+                    localStorage.removeItem("produits");
+                    // Puis on renvoie sur la page de confirmation de commande
+                    window.location.href = "../FRONT/commande.html"
                 } catch (e) {
                     console.log(e)
                 }

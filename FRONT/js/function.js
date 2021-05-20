@@ -17,7 +17,6 @@ function createHtml(tag, attributes, parent) {
     return test;
 };
 
-
 // Fonction de vérifications des champs input grâce aux regex
 
 function validEmail(inputEmail) {
