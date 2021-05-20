@@ -17,7 +17,10 @@ function createHtml(tag, attributes, parent) {
     return test;
 };
 
-const validEmail = function (inputEmail) {
+
+// Fonction de vérifications des champs input grâce aux regex
+
+function validEmail(inputEmail) {
 
     const emailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
     let testEmail = emailRegex.test(inputEmail.value);

@@ -175,9 +175,11 @@ clearPanier.addEventListener("click", function (e) {
     resetHtml(boxPanier, storage); // Appel de la fonction pour recharger l'HTML
 });
 
-// On passe au formulaire de commande
+// FORMULAIRE DE COMMANDE
 
 let form = document.getElementById("checkForm");
+
+// Récupération de chaque champs <input>
 
 let lastname = form.userName;
 let firstname = form.userName2;
@@ -185,6 +187,8 @@ let email = form.userEmail;
 let address = form.userAddress;
 let city = form.userCity;
 let CP = form.userCP;
+
+// Vérification de chaque données saisie dans chacun des inputs en appellant une fonction pour renvoyer true/false
 
 lastname.addEventListener("change", function () {
     validName(this);
@@ -210,22 +214,19 @@ CP.addEventListener("change", function () {
     validCP(this);
 })
 
-
-/* document.getElementById("checkForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Commande envoyé !");
-}); */
-
-
-
+// On écoute l'évènement du bouton Envoyer
 
 form.addEventListener("submit", function (e) {
     e.preventDefault();
+
+    // Si toutes les vérifications d'input sont true :
     if (validName(lastname) && validName(firstname) && validEmail(email) && validAddress(address) && validName(city) && validCP(CP)) {
 
+        // Récupération de la valeur du prix total du panier
         let price = document.getElementById("total").attributes[2].value;
         console.log(price)
 
+        // Création de l'objet contact contenant toutes les informations
         const contact = {
             "firstName": firstname.value,
             "lastName": lastname.value,
@@ -236,12 +237,15 @@ form.addEventListener("submit", function (e) {
         };
         console.log(contact);
 
+        // Création du tableau products
         const products = new Array();
 
+        // Envoie de chaque id, présent dans le storage(localStorage), dans le tableau products
         for (let i = 0; i < storage.length; i++) {
             products.push(storage[i].id);
         }
 
+        // Requête POST avec fetch pour envoyer les données au serveur
         const promiseOrder = fetch("http://localhost:3000/api/teddies/order", {
             method: "POST",
             headers: {
@@ -255,21 +259,24 @@ form.addEventListener("submit", function (e) {
 
         }).then(async (response) => {
             try {
-                //console.log(response);
-                const order = await response.json();
+                const order = await response.json(); // Récupération de la réponse pour afficher l'ID de commande
                 console.log(order);
+
+                // On enregistre toutes les informations dans un nouveau localStorage
                 localStorage.setItem("orderID", order.orderId);
                 localStorage.setItem("orderPrice", order["contact"]["prix commande"]);
                 localStorage.setItem("orderName", order["contact"]["firstName"] + " " + order["contact"]["lastName"])
                 console.log(order.orderId);
                 console.log(order["contact"]["prix commande"]);
                 console.log(order["contact"]["firstName"] + " " + order["contact"]["lastName"])
-                //window.location.href = "../FRONT/commande.html"
+
+                //window.location.href = "../FRONT/commande.html" // Puis on renvoie sur la page de confirmation de commande
             } catch (e) {
                 console.log(e)
             }
         });
 
+    // Si une ou plusieurs vérifications input est false alors envoie une alerte
     } else {
         alert("Tout les champs ne sont pas correct");
     }
