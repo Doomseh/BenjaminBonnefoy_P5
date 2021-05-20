@@ -28,11 +28,11 @@ function validEmail(inputEmail) {
 
     if (testEmail) {
         email.classList.remove("border-black", "border-red-500");
-        email.classList.add("border-green-400");
+        email.classList.add("border-green-400", "border-4");
         return true;
     } else {
         email.classList.remove("border-black", "border-green-400");
-        email.classList.add("border-red-500");
+        email.classList.add("border-red-500", "border-4");
         return false;
     }
 };
@@ -45,11 +45,11 @@ function validName(inputName) {
 
     if (testName) {
         inputName.classList.remove("border-black", "border-red-500");
-        inputName.classList.add("border-green-400");
+        inputName.classList.add("border-green-400", "border-4");
         return true;
     } else {
         inputName.classList.remove("border-black", "border-green-400");
-        inputName.classList.add("border-red-500");
+        inputName.classList.add("border-red-500", "border-4");
         return false;
     }
 };
@@ -62,11 +62,11 @@ function validAddress(inputAddress) {
 
     if (testAddress) {
         inputAddress.classList.remove("border-black", "border-red-500");
-        inputAddress.classList.add("border-green-400");
+        inputAddress.classList.add("border-green-400", "border-4");
         return true;
     } else {
         inputAddress.classList.remove("border-black", "border-green-400");
-        inputAddress.classList.add("border-red-500");
+        inputAddress.classList.add("border-red-500", "border-4");
         return false;
     }
 };
@@ -79,11 +79,11 @@ function validCP(inputCP) {
 
     if (testCP) {
         inputCP.classList.remove("border-black", "border-red-500");
-        inputCP.classList.add("border-green-400");
+        inputCP.classList.add("border-green-400", "border-4");
         return true;
     } else {
         inputCP.classList.remove("border-black", "border-green-400");
-        inputCP.classList.add("border-red-500");
+        inputCP.classList.add("border-red-500", "border-4");
         return false;
     }
 };
