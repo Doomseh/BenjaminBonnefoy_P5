@@ -12,91 +12,53 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
     const mainProduit = document.getElementById("mainProduit");
 
-    /* let blockProduit = document.createElement("div");
-    blockProduit.classList.add("mx-auto", "py-8", "lg:py-16", "px-8", "max-w-7xl");
-    mainProduit.appendChild(blockProduit); */
     let blockProduit = createHtml("div", {
         "class": "mx-auto py-8 lg:py-16 px-8 max-w-7xl"
     }, mainProduit);
 
-    /* let blockGrid = document.createElement("div");
-    blockGrid.classList.add("grid", "lg:grid-cols-2", "gap-8");
-    blockProduit.appendChild(blockGrid); */
     let blockGrid = createHtml("div", {
         "class": "grid lg:grid-cols-2 gap-8"
     }, blockProduit);
 
-    /* let blockImg = document.createElement("div");
-    blockImg.classList.add("bg-red-200", "p-4", "sm:p-6", "md:p-10", "rounded-2xl", "shadow-md");
-    blockGrid.appendChild(blockImg); */
     let blockImg = createHtml("div", {
         "class": "bg-red-200 p-4 sm:p-6 md:p-10 rounded-2xl shadow-md"
     }, blockGrid);
 
-    /* let imgProduit = document.createElement("img");
-    imgProduit.classList.add("rounded-2xl");
-    imgProduit.setAttribute("src", data.imageUrl);
-    imgProduit.setAttribute("alt", "Photo de la peluche " + data.name);
-    blockImg.appendChild(imgProduit); */
     let imgProduit = createHtml("img", {
         "class": "rounded-2xl",
         "src": data.imageUrl,
         "alt": "Photo de la peluche " + data.name
     }, blockImg);
 
-    /* let blockDetails = document.createElement("div");
-    blockDetails.classList.add("grid", "gap-4", "lg:gap-0", "text-center", "lg:text-left", "text-xl");
-    blockGrid.appendChild(blockDetails); */
     let blockDetails = createHtml("div", {
         "class": "grid gap-4 lg:gap-0 text-center lg:text-left text-xl"
     }, blockGrid);
 
-    /* let nameProduit = document.createElement("p");
-    nameProduit.classList.add("self-center", "font-bold", "text-3xl");
-    blockDetails.appendChild(nameProduit) */
     let nameProduit = createHtml("p", {
         "class": "self-center font-bold text-3xl"
     }, blockDetails);
     nameProduit.textContent = data.name;
 
-    /* let descProduit = document.createElement("p");
-    descProduit.classList.add("self-center");
-    blockDetails.appendChild(descProduit); */
     let descProduit = createHtml("p", {
         "class": "self-center"
     }, blockDetails);
     descProduit.textContent = data.description;
 
-    /* let priceProduit = document.createElement("p");
-    priceProduit.classList.add("self-center", "text-2xl", "font-bold", "text-indigo-400", "underline");
-    blockDetails.appendChild(priceProduit); */
     let priceProduit = createHtml("p", {
         "class": "self-center text-2xl font-bold text-indigo-400 underline"
     }, blockDetails);
     priceProduit.textContent = data.price / 100 + "€";
 
-    /* let blockSelect = document.createElement("div");
-    blockSelect.classList.add("self-center");
-    blockDetails.appendChild(blockSelect); */
     let blockSelect = createHtml("div", {
         "class": "self-center"
     }, blockDetails);
 
-    /* let select = document.createElement("select");
-    select.classList.add("p-2", "rounded-full", "shadow-md", "text-base", "border-2", "border-black");
-    select.setAttribute("name", "color")
-    select.setAttribute("id", "colorProduit");
-    blockSelect.appendChild(select); */
     let select = createHtml("select", {
         "class": "p-2 rounded-full shadow-md text-base border-2 border-black",
         "name": "color",
         "id": "colorProduit"
     }, blockSelect);
 
-
-    /* let choice = document.createElement("option");
-    choice.setAttribute("value", "");
-    select.appendChild(choice); */
     let choice = createHtml("option", {
         "value": ""
     }, select);
@@ -104,9 +66,6 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
     for (let i = 0; i < data.colors.length; i++) {
 
-        /* let color = document.createElement("option");
-        color.classList.add("font-bold")
-        select.appendChild(color); */
         let color = createHtml("option", {
             "class": "font-bold"
         }, select);
@@ -150,32 +109,16 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
     }
 
-    /* let blockQuantity = document.createElement("div");
-    blockQuantity.classList.add("self-center");
-    blockDetails.appendChild(blockQuantity); */
     let blockQuantity = createHtml("div", {
         "class": "self-center"
     }, blockDetails);
 
-    /* let labelQuantity = document.createElement("label");
-    labelQuantity.classList.add("mr-4");
-    labelQuantity.setAttribute("for", "quantity");
-    blockQuantity.appendChild(labelQuantity); */
     let labelQuantity = createHtml("label", {
         "class": "mr-4",
         "for": "quantity"
     }, blockQuantity);
     labelQuantity.textContent = "Quantité :";
 
-
-    /* let quantity = document.createElement("input");
-    quantity.classList.add("border-2", "border-black");
-    quantity.setAttribute("type", "number");
-    quantity.setAttribute("id", "quantity");
-    quantity.setAttribute("value", "1");
-    quantity.setAttribute("min", "1");
-    quantity.setAttribute("max", "100");
-    blockQuantity.appendChild(quantity); */
     let quantity = createHtml("input", {
         "class": "border-2 border-black",
         "type": "number",
@@ -185,17 +128,10 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
         "max": "100"
     }, blockQuantity);
 
-    /* let blockButton = document.createElement("div");
-    blockButton.classList.add("self-center");
-    blockDetails.appendChild(blockButton); */
     let blockButton = createHtml("div", {
         "class": "self-center"
     }, blockDetails);
 
-    /* let button = document.createElement("button");
-    button.classList.add("border-black", "border-2", "rounded-full", "px-8", "bg-purple-600", "text-white", "shadow-md");
-    button.setAttribute("id", "addCart");
-    blockButton.appendChild(button); */
     let button = createHtml("button", {
         "class": "border-black border-2 rounded-full px-8 bg-purple-600 text-white shadow-md",
         "id": "addCart"
