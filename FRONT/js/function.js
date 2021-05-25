@@ -23,7 +23,7 @@ function valid(input) {
 
     let inputName = input.attributes.name.value
     console.log(inputName)
-    
+
     switch (inputName) {
         case "lastName":
         case "firstName":
@@ -33,7 +33,7 @@ function valid(input) {
             updateInputStyle(testName, input)
             console.log(testName);
             break;
-        case "userEmail": 
+        case "userEmail":
             const emailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
             let testEmail = emailRegex.test(input.value);
             updateInputStyle(testEmail, input)
@@ -56,12 +56,12 @@ function valid(input) {
 
 // Fonction pour changer le style des bordure de l'input si true/false
 
-function updateInputStyle (valid, input) {
-    if(valid === true) {
+function updateInputStyle(valid, input) {
+    if (valid === true) {
         input.classList.remove("border-black", "border-red-500");
         input.classList.add("border-green-400", "border-4");
     } else {
-    input.classList.remove("border-black", "border-green-400");
-    input.classList.add("border-red-500", "border-4");
+        input.classList.remove("border-black", "border-green-400");
+        input.classList.add("border-red-500", "border-4");
     };
 };
