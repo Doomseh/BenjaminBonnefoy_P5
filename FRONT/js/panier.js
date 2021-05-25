@@ -114,7 +114,7 @@ function resetHtml(boxPanier, storage) {
         let total = createHtml("td", {
             "class": "font-bold text-indigo-400",
             "id": "total",
-            "value": totalPrice,
+            //"value": totalPrice,
         }, trFooter);
         total.textContent = totalPrice + "€"; // On affiche le Prix total
     }
@@ -136,8 +136,8 @@ let form = document.getElementById("checkForm");
 
 // Récupération de chaque champs <input>
 
-let lastname = form.userName;
-let firstname = form.userName2;
+let lastname = form.lastName;
+let firstname = form.firstName;
 let email = form.userEmail;
 let address = form.userAddress;
 let city = form.userCity;
@@ -146,27 +146,27 @@ let CP = form.userCP;
 // Vérification de chaque données saisie dans chacun des inputs en appellant une fonction pour renvoyer true/false
 
 lastname.addEventListener("change", function () {
-    validName(this);
+    valid(this);
 });
 
 firstname.addEventListener("change", function () {
-    validName(this);
+    valid(this);
 });
 
 email.addEventListener("change", function () {
-    validEmail(this);
+    valid(this);
 });
 
 address.addEventListener("change", function () {
-    validAddress(this);
+    valid(this);
 });
 
 city.addEventListener("change", function () {
-    validName(this);
+    valid(this);
 });
 
 CP.addEventListener("change", function () {
-    validCP(this);
+    valid(this);
 })
 
 // On écoute l'évènement du bouton Envoyer
@@ -184,7 +184,7 @@ form.addEventListener("submit", function (e) {
         if (validName(lastname) && validName(firstname) && validEmail(email) && validAddress(address) && validName(city) && validCP(CP)) {
 
             // Récupération de la valeur du prix total du panier
-            let price = document.getElementById("total").attributes[2].value;
+            let price = document.getElementById("total").innerText;
             console.log(price)
 
             // Création de l'objet contact contenant toutes les informations
@@ -225,10 +225,10 @@ form.addEventListener("submit", function (e) {
 
                     // On enregistre toutes les informations dans un nouveau localStorage
                     localStorage.setItem("orderID", order.orderId);
-                    localStorage.setItem("orderPrice", order["contact"]["prix commande"]);
+                    localStorage.setItem("orderPrice", order["contact"]["prix_commande"]);
                     localStorage.setItem("orderName", order["contact"]["firstName"] + " " + order["contact"]["lastName"])
                     console.log(order.orderId);
-                    console.log(order["contact"]["prix commande"]);
+                    console.log(order["contact"]["prix_commande"]);
                     console.log(order["contact"]["firstName"] + " " + order["contact"]["lastName"])
 
                     localStorage.removeItem("produits");

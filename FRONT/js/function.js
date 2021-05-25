@@ -19,70 +19,49 @@ function createHtml(tag, attributes, parent) {
 
 // Fonction de vérifications des champs input grâce aux regex
 
-function validEmail(inputEmail) {
+function valid(input) {
 
-    const emailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
-    let testEmail = emailRegex.test(inputEmail.value);
-    console.log(testEmail);
-
-    if (testEmail) {
-        email.classList.remove("border-black", "border-red-500");
-        email.classList.add("border-green-400", "border-4");
-        return true;
-    } else {
-        email.classList.remove("border-black", "border-green-400");
-        email.classList.add("border-red-500", "border-4");
-        return false;
-    }
+    let inputName = input.attributes.name.value
+    console.log(inputName)
+    
+    switch (inputName) {
+        case "lastName":
+        case "firstName":
+        case "userCity":
+            const nameRegex = /^[A-Za-zÀ-ÿ -']+$/;
+            let testName = nameRegex.test(input.value);
+            updateInputStyle(testName, input)
+            console.log(testName);
+            break;
+        case "userEmail": 
+            const emailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
+            let testEmail = emailRegex.test(input.value);
+            updateInputStyle(testEmail, input)
+            console.log(testEmail);
+            break;
+        case "userAddress":
+            const addressRegex = /^[0-9A-Za-zÀ-ÿ -]+$/
+            let testAddress = addressRegex.test(input.value);
+            updateInputStyle(testAddress, input)
+            console.log(testAddress);
+            break;
+        case "userCP":
+            const cpRegex = /^[0-9]{5}$/
+            let testCP = cpRegex.test(input.value);
+            updateInputStyle(testCP, input)
+            console.log(testCP);
+            break;
+    };
 };
 
-function validName(inputName) {
+// Fonction pour changer le style des bordure de l'input si true/false
 
-    const nameRegex = /^[A-Za-zÀ-ÿ -']+$/
-    let testName = nameRegex.test(inputName.value);
-    console.log(testName);
-
-    if (testName) {
-        inputName.classList.remove("border-black", "border-red-500");
-        inputName.classList.add("border-green-400", "border-4");
-        return true;
+function updateInputStyle (valid, input) {
+    if(valid === true) {
+        input.classList.remove("border-black", "border-red-500");
+        input.classList.add("border-green-400", "border-4");
     } else {
-        inputName.classList.remove("border-black", "border-green-400");
-        inputName.classList.add("border-red-500", "border-4");
-        return false;
-    }
-};
-
-function validAddress(inputAddress) {
-
-    const addressRegex = /^[0-9A-Za-zÀ-ÿ -]+$/
-    let testAddress = addressRegex.test(inputAddress.value);
-    console.log(testAddress);
-
-    if (testAddress) {
-        inputAddress.classList.remove("border-black", "border-red-500");
-        inputAddress.classList.add("border-green-400", "border-4");
-        return true;
-    } else {
-        inputAddress.classList.remove("border-black", "border-green-400");
-        inputAddress.classList.add("border-red-500", "border-4");
-        return false;
-    }
-};
-
-function validCP(inputCP) {
-
-    const cpRegex = /^[0-9]{5}$/
-    let testCP = cpRegex.test(inputCP.value);
-    console.log(testCP);
-
-    if (testCP) {
-        inputCP.classList.remove("border-black", "border-red-500");
-        inputCP.classList.add("border-green-400", "border-4");
-        return true;
-    } else {
-        inputCP.classList.remove("border-black", "border-green-400");
-        inputCP.classList.add("border-red-500", "border-4");
-        return false;
-    }
+    input.classList.remove("border-black", "border-green-400");
+    input.classList.add("border-red-500", "border-4");
+    };
 };

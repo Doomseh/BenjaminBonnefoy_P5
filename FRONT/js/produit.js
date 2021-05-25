@@ -67,9 +67,9 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     for (let i = 0; i < data.colors.length; i++) {
 
         let color = createHtml("option", {
-            "class": "font-bold"
+            "class": "font-bold",
+            "value": data.colors[i]
         }, select);
-        color.setAttribute("value", data.colors[i]);
         color.textContent = data.colors[i];
 
         switch (data.colors[i]) {

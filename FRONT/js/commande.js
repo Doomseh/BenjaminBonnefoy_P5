@@ -18,5 +18,5 @@ if (orderName && orderID && orderPrice) {
 
     purchaseID.textContent = "L'ID de votre commande est : " + orderID;
 
-    purchasePrice.textContent = "Le montant total de votre commande est de " + orderPrice + "€.";
+    purchasePrice.textContent = "Le montant total de votre commande est de " + orderPrice + ".";
 }
