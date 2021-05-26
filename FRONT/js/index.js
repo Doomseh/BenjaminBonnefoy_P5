@@ -43,6 +43,7 @@ fetch("http://localhost:3000/api/teddies").then(response => {
             "class": "text-indigo-400 font-bold"
         }, blockPriceName);
         priceBear.textContent = data[i].price / 100 + "€";
+        console.log(priceBear);
 
     };
 });

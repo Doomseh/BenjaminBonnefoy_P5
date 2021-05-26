@@ -3,6 +3,8 @@ const url_params = new URLSearchParams(url);
 const id = url.searchParams.get("id");
 console.log(url);
 
+// fetch de l'api avec l'id de l'ours sélectionné sur la page précédente
+
 fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     if (response.ok) {
         return response.json();
@@ -10,7 +12,7 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 }).then(data => {
     console.log(data);
 
-    const mainProduit = document.getElementById("mainProduit");
+    const mainProduit = document.getElementById("mainProduit"); // récupération de la <div> contenant les détails du produit
 
     let blockProduit = createHtml("div", {
         "class": "mx-auto py-8 lg:py-16 px-8 max-w-7xl"
@@ -64,6 +66,8 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     }, select);
     choice.textContent = "Selectionnez une couleur";
 
+    // Boucle pour parcourir tout le tableau des couleurs
+
     for (let i = 0; i < data.colors.length; i++) {
 
         let color = createHtml("option", {
@@ -71,6 +75,8 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
             "value": data.colors[i]
         }, select);
         color.textContent = data.colors[i];
+
+        // Création d'un switch pour assigner à chaque couleur leur couleur de fond respective
 
         switch (data.colors[i]) {
             case 'Tan':
@@ -140,6 +146,7 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
 
     // Création d'une class pour stocker le produit
+
     class Produit {
         constructor(id, name, imageUrl, price, description, quantity, color) {
             this.id = id;
@@ -159,17 +166,22 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     // Fonction pour le click du bouton
 
     addCart.addEventListener("click", function (e) {
+
         // Création du produit
+
         const produit = new Produit(data._id, data.name, data.imageUrl, data.price / 100, data.description, document.getElementById('quantity').value, document.getElementById('colorProduit').value);
 
         if (select.value == "") {
 
             e.preventDefault();
-            alert("Veuillez selectionner une couleur !")
+            alert("Veuillez selectionner une couleur !") // Envoi une alerte si une couleur n'a pas été selectionné 
 
         } else {
+
             // Condition pour savoir si un localStorage est présent ou non
+
             if (localStorage.getItem("produits") == null) {
+
                 const pArray = [produit]; // Création d'un tableau avec les valeurs du produit
                 console.log(pArray);
                 const pStringify = JSON.stringify(pArray);
@@ -177,13 +189,19 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
                 localStorage.setItem("produits", pStringify); // Sauvegarde des données avec la clé "produits" de valeur pStringify
 
             } else {
+
                 const produits = JSON.parse(localStorage.getItem("produits"));
                 const filter = produits.filter(item => item.id === produit.id).filter(item => item.color === produit.color); // filtre pour vérifier l'id et la couleur
+
                 if (filter.length > 0) {
+
                     filter[0].quantity = parseInt(filter[0].quantity) + parseInt(document.getElementById('quantity').value); // Ajoute uniquement des quantitées si l'élement est déja présent
+
                 } else {
+
                     produits.push(produit); // Ajoute les nouvelles valeurs des produits non déja présente
                 }
+
                 const pStringify = JSON.stringify(produits);
                 localStorage.setItem("produits", pStringify); // Sauvegarde des données avec la clé "produits" de valeur pStringify
                 console.log(pStringify);
