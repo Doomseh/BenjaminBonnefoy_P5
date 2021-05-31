@@ -67,7 +67,6 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     choice.textContent = "Selectionnez une couleur";
 
     // Boucle pour parcourir tout le tableau des couleurs
-
     for (let i = 0; i < data.colors.length; i++) {
 
         let color = createHtml("option", {
@@ -77,7 +76,6 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
         color.textContent = data.colors[i];
 
         // Création d'un switch pour assigner à chaque couleur leur couleur de fond respective
-
         switch (data.colors[i]) {
             case 'Tan':
                 color.style.backgroundColor = "#d2b48c";
@@ -111,9 +109,8 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
             case 'Beige':
                 color.style.backgroundColor = "#f5f5dc";
                 break;
-        }
-
-    }
+        };
+    };
 
     let blockQuantity = createHtml("div", {
         "class": "self-center"
@@ -146,7 +143,6 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
 
     // Création d'une class pour stocker le produit
-
     class Produit {
         constructor(id, name, imageUrl, price, description, quantity, color) {
             this.id = id;
@@ -160,15 +156,12 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
     };
 
     // Récupération du bouton "Ajouter au panier"
-
     const addCart = document.getElementById("addCart");
 
     // Fonction pour le click du bouton
-
     addCart.addEventListener("click", function (e) {
 
         // Création du produit
-
         const produit = new Produit(data._id, data.name, data.imageUrl, data.price / 100, data.description, document.getElementById('quantity').value, document.getElementById('colorProduit').value);
 
         if (select.value == "") {
@@ -179,13 +172,10 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
         } else {
 
             // Condition pour savoir si un localStorage est présent ou non
-
             if (localStorage.getItem("produits") == null) {
 
                 const pArray = [produit]; // Création d'un tableau avec les valeurs du produit
-                console.log(pArray);
                 const pStringify = JSON.stringify(pArray);
-                console.log(pStringify);
                 localStorage.setItem("produits", pStringify); // Sauvegarde des données avec la clé "produits" de valeur pStringify
 
             } else {
@@ -204,7 +194,6 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
                 const pStringify = JSON.stringify(produits);
                 localStorage.setItem("produits", pStringify); // Sauvegarde des données avec la clé "produits" de valeur pStringify
-                console.log(pStringify);
             }
         }
     });

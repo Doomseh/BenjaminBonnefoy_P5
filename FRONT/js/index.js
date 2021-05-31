@@ -8,7 +8,6 @@ fetch("http://localhost:3000/api/teddies").then(response => {
     const divOurs = document.getElementById("divOurs"); // récupération de la <div> contenant les ours
 
     // Création d'une boucle pour récupérer la totalité des peluches 
-
     for (let i = 0; i < data.length; i++) {
 
         let aBear = createHtml("div", {
@@ -43,7 +42,5 @@ fetch("http://localhost:3000/api/teddies").then(response => {
             "class": "text-indigo-400 font-bold"
         }, blockPriceName);
         priceBear.textContent = data[i].price / 100 + "€";
-        console.log(priceBear);
-
     };
 });

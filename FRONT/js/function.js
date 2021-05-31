@@ -7,14 +7,14 @@
  */
 function createHtml(tag, attributes, parent) {
 
-    let test = document.createElement(tag);
+    let newElement = document.createElement(tag);
     Object.entries(attributes).forEach((value) => {
-        test.setAttribute(value[0], value[1]);
+        newElement.setAttribute(value[0], value[1]);
     });
 
-    parent.appendChild(test);
+    parent.appendChild(newElement);
 
-    return test;
+    return newElement;
 };
 
 // Fonction de vérifications des champs input grâce aux regex
@@ -30,26 +30,26 @@ function valid(input) {
         case "userCity":
             const nameRegex = /^[A-Za-zÀ-ÿ -']+$/;
             let testName = nameRegex.test(input.value);
-            updateInputStyle(testName, input)
-            console.log(testName);
+            updateInputStyle(testName, input);
+            return testName;
             break;
         case "userEmail":
             const emailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
             let testEmail = emailRegex.test(input.value);
-            updateInputStyle(testEmail, input)
-            console.log(testEmail);
+            updateInputStyle(testEmail, input);
+            return testEmail;
             break;
         case "userAddress":
             const addressRegex = /^[0-9A-Za-zÀ-ÿ -]+$/
             let testAddress = addressRegex.test(input.value);
-            updateInputStyle(testAddress, input)
-            console.log(testAddress);
+            updateInputStyle(testAddress, input);
+            return testAddress;
             break;
         case "userCP":
             const cpRegex = /^[0-9]{5}$/
             let testCP = cpRegex.test(input.value);
-            updateInputStyle(testCP, input)
-            console.log(testCP);
+            updateInputStyle(testCP, input);
+            return testCP;
             break;
     };
 };
@@ -64,4 +64,43 @@ function updateInputStyle(valid, input) {
         input.classList.remove("border-black", "border-green-400");
         input.classList.add("border-red-500", "border-4");
     };
+};
+
+// Fonction pour supprimer l'élément du panier au click du button
+
+function deleteItem(storage, i, boxPanier) {
+
+    storage.splice(i, 1); // Suppression du tableau correspondant à l'élément ciblé dans le storage
+
+    const sStringify = JSON.stringify(storage);
+    localStorage.setItem("produits", sStringify); // Sauvegarde de la nouvelle valeur du localStorage
+
+    resetHtml(boxPanier, storage); // On appelle la fonction pour recharger l'HTML de la page pour afficher les modifications éffectuées
+
+};
+
+// Fonction pour vider le panier complétement
+
+function clearStorage(storage, boxPanier) {
+
+    storage = localStorage.clear(); // Suppression total du contenu de localStorage
+
+    resetHtml(boxPanier, storage); // Appel de la fonction pour recharger l'HTML
+
+};
+
+// Fonction pour sauvegarder la commande dans le localStorage et renvoyer sur la page de confirmation de commande
+
+function saveOrder(order) {
+
+    // On enregistre toutes les informations dans un nouveau localStorage
+    localStorage.setItem("orderID", order.orderId);
+    localStorage.setItem("orderPrice", order["contact"]["prix_commande"]);
+    localStorage.setItem("orderName", order["contact"]["firstName"] + " " + order["contact"]["lastName"]);
+
+    // Suppression du localStorage des produits du panier
+    localStorage.removeItem("produits");
+
+    // Puis on renvoie sur la page de confirmation de commande
+    window.location.href = "../FRONT/commande.html";
 };
