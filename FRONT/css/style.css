@@ -1,3 +1,22 @@
+@keyframes slideAdd {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
+.slideAnim {
+    animation: slideAdd 3s forwards;
+}
+
 @media screen and (min-width: 425px) {
     .mrem {
         max-width: 5rem;

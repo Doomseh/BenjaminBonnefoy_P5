@@ -104,3 +104,28 @@ function saveOrder(order) {
     // Puis on renvoie sur la page de confirmation de commande
     window.location.href = "../FRONT/commande.html";
 };
+
+// Fonction pour afficher un pop-up de confirmation d'ajout au panier
+
+function popupAdd(produit, mainProduit) {
+
+    let popup = createHtml("div", {
+        "class": "float-right max-w-xs grid grid-cols-2 gap-2 sm:gap-4 p-2 sm:p-4 bg-purple-400 rounded-2xl w-auto absolute top-0 right-0 m-2 slideAnim"
+    }, mainProduit);
+
+    let popupImg = createHtml("img", {
+        "class": "w-auto rounded-2xl",
+        "src": produit.imageUrl,
+        "alt": produit.description
+    }, popup);
+
+    let popupText = createHtml("div", {
+        "class": "font-bold text-xl self-center grid grid-rows-2"
+    }, popup);
+
+    let popupColor = createHtml("p", {},popupText);
+    popupColor.textContent = produit.quantity + " " + produit.color;
+
+    let popupTextAdd = createHtml("p", {}, popupText);
+    popupTextAdd.textContent = "Ajouté !";
+};

@@ -163,7 +163,7 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
         // Création du produit
         const produit = new Produit(data._id, data.name, data.imageUrl, data.price / 100, data.description, document.getElementById('quantity').value, document.getElementById('colorProduit').value);
-
+        
         if (select.value == "") {
 
             e.preventDefault();
@@ -171,6 +171,9 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
         } else {
 
+            // Fonction pour afficher un pop-up de confirmation d'ajout au panier
+            popupAdd(produit, mainProduit);
+            
             // Condition pour savoir si un localStorage est présent ou non
             if (localStorage.getItem("produits") == null) {
 
@@ -191,10 +194,11 @@ fetch("http://localhost:3000/api/teddies/" + id).then(response => {
 
                     produits.push(produit); // Ajoute les nouvelles valeurs des produits non déja présente
                 }
-
+                
                 const pStringify = JSON.stringify(produits);
                 localStorage.setItem("produits", pStringify); // Sauvegarde des données avec la clé "produits" de valeur pStringify
             }
+
         }
     });
 });
