@@ -11,7 +11,6 @@ function resetHtml(boxPanier, storage) {
     boxPanier.innerHTML = "";
 
     if (storage === null || storage === undefined || storage.length === 0) {
-
         // Si le localStorage est vide alors cela affiche "Votre Panier est vide !"
         let empty = createHtml("td", {
             "class": "text-center",
@@ -20,7 +19,6 @@ function resetHtml(boxPanier, storage) {
         empty.textContent = "Votre panier est vide !";
 
     } else {
-
         // Sinon création des éléments du panier
         for (let i = 0; i < storage.length; i++) {
 
@@ -71,9 +69,7 @@ function resetHtml(boxPanier, storage) {
             const delProduit = document.getElementById(storage[i].id + storage[i].color.replace(" ", "_"));
 
             delProduit.addEventListener("click", function (e) {
-
                 deleteItem(storage, i, boxPanier); // Fonction pour supprimer l'élément du panier au click du button
-
             });
         };
 
@@ -91,10 +87,8 @@ function resetHtml(boxPanier, storage) {
         let totalPrice = 0; // Prix total défini de base à 0
 
         for (let i = 0; i < storage.length; i++) {
-
             // On boucle sur chaque élément du panier et défini la nouvelle valeur du prix total à chaque fois en y ajoutant le prix de l'élement(quantité comprise) 
             totalPrice = totalPrice + (storage[i].price * storage[i].quantity);
-
         };
 
         let total = createHtml("td", {
@@ -109,9 +103,7 @@ function resetHtml(boxPanier, storage) {
 const clearPanier = document.getElementById("clearPanier");
 
 clearPanier.addEventListener("click", function (e) {
- 
     clearStorage(storage, boxPanier); // Fonction pour vider le panier complétement
-
 });
 
 // FORMULAIRE DE COMMANDE

@@ -1,7 +1,6 @@
 const url = new URL(window.location);
 const url_params = new URLSearchParams(url);
 const id = url.searchParams.get("id");
-console.log(url);
 
 // fetch de l'api avec l'id de l'ours sélectionné sur la page précédente
 

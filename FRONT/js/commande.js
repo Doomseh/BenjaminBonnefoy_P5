@@ -1,13 +1,10 @@
 // Récupération des informations dans le localStorage 
 
 const orderName = localStorage.getItem("orderName"); // Nom + Prénom
-console.log(orderName);
 
 const orderID = localStorage.getItem("orderID"); // ID de commande
-console.log(orderID);
 
 const orderPrice = localStorage.getItem("orderPrice"); // Prix total
-console.log(orderPrice);
 
 // Récupération des éléments html
 

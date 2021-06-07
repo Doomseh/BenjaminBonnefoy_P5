@@ -22,36 +22,27 @@ function createHtml(tag, attributes, parent) {
 function valid(input) {
 
     let inputName = input.attributes.name.value
-    console.log(inputName)
+    let regex; // On déclare une première fois la valeur de regex
 
     switch (inputName) {
         case "lastName":
         case "firstName":
         case "userCity":
-            const nameRegex = /^[A-Za-zÀ-ÿ -']+$/;
-            let testName = nameRegex.test(input.value);
-            updateInputStyle(testName, input);
-            return testName;
+            regex = /^[A-Za-zÀ-ÿ -']+$/; // On défini cette regex pour les 3 cases précédente
             break;
         case "userEmail":
-            const emailRegex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
-            let testEmail = emailRegex.test(input.value);
-            updateInputStyle(testEmail, input);
-            return testEmail;
+            regex = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/; // On défini la regex pour l'Email
             break;
         case "userAddress":
-            const addressRegex = /^[0-9A-Za-zÀ-ÿ -]+$/
-            let testAddress = addressRegex.test(input.value);
-            updateInputStyle(testAddress, input);
-            return testAddress;
+            regex = /^[0-9A-Za-zÀ-ÿ -]+$/; // On défini la regex pour l'adresse 
             break;
         case "userCP":
-            const cpRegex = /^[0-9]{5}$/
-            let testCP = cpRegex.test(input.value);
-            updateInputStyle(testCP, input);
-            return testCP;
+            regex = /^[0-9]{5}$/; // On défini la regex pour le Code Postal
             break;
     };
+    let testRegex = regex.test(input.value); // On test la regex pour qu'elle renvoie true ou false
+    updateInputStyle(testRegex, input); // Appelle de la fonction pour changer le style des bordure en fonction de true ou de false
+    return testRegex;
 };
 
 // Fonction pour changer le style des bordure de l'input si true/false
@@ -123,7 +114,7 @@ function popupAdd(produit, mainProduit) {
         "class": "font-bold text-xl self-center grid grid-rows-2"
     }, popup);
 
-    let popupColor = createHtml("p", {},popupText);
+    let popupColor = createHtml("p", {}, popupText);
     popupColor.textContent = produit.quantity + " " + produit.color;
 
     let popupTextAdd = createHtml("p", {}, popupText);
